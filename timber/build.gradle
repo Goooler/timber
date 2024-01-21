@@ -5,6 +5,7 @@ apply plugin: 'org.jetbrains.dokka' // Must be applied here for publish plugin.
 
 android {
   compileSdkVersion libs.versions.compileSdk.get().toInteger()
+  namespace "timber.log"
 
   defaultConfig {
     minSdkVersion libs.versions.minSdk.get().toInteger()
