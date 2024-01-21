@@ -2,7 +2,7 @@
 minSdk = "14"
 compileSdk = "30"
 kotlin = "1.9.22"
-androidTools = "30.0.0"
+androidTools = "31.2.1"
 
 [plugins]
 ksp = "com.google.devtools.ksp:1.9.22-1.0.17"
