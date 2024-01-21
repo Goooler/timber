@@ -4,10 +4,10 @@ apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'org.jetbrains.dokka' // Must be applied here for publish plugin.
 
 android {
-  compileSdkVersion versions.compileSdk
+  compileSdkVersion libs.versions.compileSdk.get().toInteger()
 
   defaultConfig {
-    minSdkVersion versions.minSdk
+    minSdkVersion libs.versions.minSdk.get().toInteger()
     consumerProguardFiles 'consumer-proguard-rules.pro'
   }
 
@@ -18,13 +18,13 @@ android {
 }
 
 dependencies {
-  api deps.kotlin.stdlib
-  implementation deps.annotations
+  api libs.kotlin.stdlib
+  implementation libs.annotations
 
-  testImplementation deps.annotations
-  testImplementation deps.junit
-  testImplementation deps.truth
-  testImplementation deps.robolectric
+  testImplementation libs.annotations
+  testImplementation libs.junit
+  testImplementation libs.truth
+  testImplementation libs.robolectric
 
   lintPublish project(':timber-lint')
 }
