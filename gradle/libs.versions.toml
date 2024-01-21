@@ -1,7 +1,7 @@
 [versions]
 minSdk = "14"
 compileSdk = "30"
-kotlin = "1.5.21"
+kotlin = "1.9.22"
 autoService = "1.0-rc7"
 androidTools = "30.0.0"
 
