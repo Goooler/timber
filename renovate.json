@@ -12,6 +12,12 @@
       "matchPackagePatterns": [
         "org.jetbrains.kotlin.*"
       ]
+    },
+    {
+      "groupName": "AGP",
+      "matchPackagePatterns": [
+        "com.android.*"
+      ]
     }
   ]
 }
