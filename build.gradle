@@ -14,7 +14,6 @@ buildscript {
     classpath libs.kotlin.plugin
     classpath libs.japicmpPlugin
     classpath libs.publishPlugin
-    classpath libs.dokkaPlugin
   }
 }
 
