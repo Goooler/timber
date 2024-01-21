@@ -6,9 +6,11 @@ configurations {
 }
 
 dependencies {
-  baseline('com.jakewharton.timber:timber:4.7.1') {
+  baseline('com.jakewharton.timber:timber') {
     transitive = false
-    force = true
+    version {
+      strictly('4.7.1')
+    }
   }
   latest project(path: ':timber', configuration: 'releaseRuntimeElements')
 }
