@@ -1,3 +1,5 @@
+import me.champeau.gradle.japicmp.JapicmpTask
+
 configurations {
   baseline
   latest
@@ -11,14 +13,14 @@ dependencies {
   latest project(path: ':timber', configuration: 'releaseRuntimeElements')
 }
 
-task japicmp(type: me.champeau.gradle.japicmp.JapicmpTask) {
-  oldClasspath = configurations.baseline.incoming.artifactView { config ->
+def japicmp = tasks.register('japicmp', JapicmpTask) {
+  oldClasspath.setFrom configurations.baseline.incoming.artifactView { config ->
     config.attributes { container ->
       container.attribute(Attribute.of("artifactType", String.class), "jar")
     }
   }.artifacts.artifactFiles
 
-  newClasspath = configurations.latest.incoming.artifactView { config ->
+  newClasspath.setFrom configurations.latest.incoming.artifactView { config ->
     config.attributes { container ->
       container.attribute(Attribute.of("artifactType", String.class), "jar")
     }
@@ -31,8 +33,10 @@ task japicmp(type: me.champeau.gradle.japicmp.JapicmpTask) {
   includeSynthetic = true
 }
 
-def check = tasks.create('check')
-check.dependsOn(japicmp)
+def check = tasks.register('check') {
+  it.dependsOn(japicmp)
+}
 
-def build = tasks.create('build')
-build.dependsOn(check)
+tasks.register('build') {
+  it.dependsOn(check)
+}
