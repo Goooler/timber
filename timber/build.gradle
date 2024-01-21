@@ -23,7 +23,7 @@ dependencies {
 
   testImplementation deps.annotations
   testImplementation deps.junit
-  testImplementation deps.truth
+  testImplementation deps.assertk
   testImplementation deps.robolectric
 
   lintPublish project(':timber-lint')

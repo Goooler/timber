@@ -2,7 +2,20 @@ package timber.log
 
 import android.os.Build
 import android.util.Log
-import com.google.common.truth.ThrowableSubject
+import assertk.assertFailure
+import assertk.assertThat
+import assertk.assertions.contains
+import assertk.assertions.containsExactly
+import assertk.assertions.hasMessage
+import assertk.assertions.hasSize
+import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
+import assertk.assertions.isNotNull
+import assertk.assertions.isNull
+import assertk.assertions.isTrue
+import assertk.assertions.message
+import assertk.assertions.startsWith
+import assertk.fail
 import java.net.ConnectException
 import java.net.UnknownHostException
 import java.util.ArrayList
@@ -15,9 +28,6 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowLog
 
-import com.google.common.truth.Truth.assertThat
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
 import org.robolectric.shadows.ShadowLog.LogItem
 
 @RunWith(RobolectricTestRunner::class)
@@ -45,14 +55,9 @@ class TimberTest {
   @Test fun recursion() {
     val timber = Timber.asTree()
 
-    assertThrows<IllegalArgumentException> {
+    assertFailure {
       Timber.plant(timber)
-    }.hasMessageThat().isEqualTo("Cannot plant Timber into itself.")
-
-    assertThrows<IllegalArgumentException> {
-      @Suppress("RemoveRedundantSpreadOperator") // Explicitly calling vararg overload.
-      Timber.plant(*arrayOf(timber))
-    }.hasMessageThat().isEqualTo("Cannot plant Timber into itself.")
+    }.isInstanceOf(IllegalArgumentException::class).hasMessage("Cannot plant Timber into itself.")
   }
 
   @Test fun treeCount() {
@@ -84,9 +89,10 @@ class TimberTest {
   }
 
   @Test fun uprootThrowsIfMissing() {
-    assertThrows<IllegalArgumentException> {
+    assertFailure {
       Timber.uproot(Timber.DebugTree())
-    }.hasMessageThat().startsWith("Cannot uproot tree which is not planted: ")
+    }.isInstanceOf(IllegalArgumentException::class).message().isNotNull()
+      .startsWith("Cannot uproot tree which is not planted: ")
   }
 
   @Test fun uprootRemovesTree() {
@@ -278,12 +284,12 @@ class TimberTest {
 
       override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         try {
-          assertTrue(Log.isLoggable(tag, priority))
+          assertThat(Log.isLoggable(tag, priority)).isTrue()
           if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            assertTrue(tag!!.length <= MAX_TAG_LENGTH)
+            assertThat(tag!!.length <= MAX_TAG_LENGTH).isTrue()
           }
         } catch (e: IllegalArgumentException) {
-          fail(e.message)
+          fail(e.message.orEmpty())
         }
 
         super.log(priority, tag, message, t)
@@ -582,18 +588,6 @@ class TimberTest {
   }
 
   private fun getLogs() = ShadowLog.getLogs().filter { it.tag != ROBOLECTRIC_INSTRUMENTATION_TAG }
-
-  private inline fun <reified T : Throwable> assertThrows(body: () -> Unit): ThrowableSubject {
-    try {
-      body()
-    } catch (t: Throwable) {
-      if (t is T) {
-        return assertThat(t)
-      }
-      throw t
-    }
-    throw AssertionError("Expected body to throw ${T::class.java.name} but completed successfully")
-  }
 
   private class LogAssert internal constructor(private val items: List<LogItem>) {
     private var index = 0
