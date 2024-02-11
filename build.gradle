@@ -1,6 +1,4 @@
 import com.android.build.gradle.api.AndroidBasePlugin
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 buildscript {
   repositories {
