@@ -2,13 +2,13 @@
 minSdk = "14"
 compileSdk = "30"
 kotlin = "1.9.22"
-androidTools = "31.2.1"
+androidTools = "31.2.2"
 
 [plugins]
 ksp = "com.google.devtools.ksp:1.9.22-1.0.17"
 
 [libraries]
-androidPlugin = "com.android.tools.build:gradle:8.2.1"
+androidPlugin = "com.android.tools.build:gradle:8.2.2"
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 japicmpPlugin = "me.champeau.gradle:japicmp-gradle-plugin:0.4.2"
