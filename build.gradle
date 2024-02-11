@@ -45,12 +45,6 @@ subprojects {
     }
   }
 
-  tasks.withType(KotlinCompile).configureEach {
-    compilerOptions {
-      jvmTarget = JvmTarget.JVM_1_8
-    }
-  }
-
   tasks.withType(Test).configureEach {
     testLogging {
       events "failed"
