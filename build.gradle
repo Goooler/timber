@@ -43,7 +43,7 @@ subprojects {
 
   tasks.withType(KotlinCompile).configureEach {
     compilerOptions {
-      jvmTarget = JvmTarget.JVM_11
+      jvmTarget = JvmTarget.JVM_1_8
     }
   }
 
