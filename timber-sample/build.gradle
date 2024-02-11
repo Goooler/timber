@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion libs.versions.compileSdk.get().toInteger()
   namespace "com.example.timber"
 
   buildFeatures {
@@ -11,15 +10,12 @@ android {
 
   defaultConfig {
     applicationId 'com.example.timber'
-    minSdkVersion libs.versions.minSdk.get().toInteger()
-    targetSdkVersion libs.versions.compileSdk.get().toInteger()
+    targetSdk compileSdk
     versionCode 1
     versionName '1.0.0'
   }
 
-  lintOptions {
-    textReport true
-    textOutput 'stdout'
+  lint {
     ignore 'InvalidPackage'
   }
 }

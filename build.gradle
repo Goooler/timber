@@ -1,3 +1,7 @@
+import com.android.build.gradle.api.AndroidBasePlugin
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 buildscript {
   repositories {
     mavenCentral()
@@ -24,7 +28,31 @@ subprojects {
     google()
   }
 
-  tasks.withType(Test) {
+  plugins.withType(AndroidBasePlugin).configureEach {
+    android {
+      compileSdk 30
+
+      defaultConfig {
+        minSdkVersion 14
+        consumerProguardFiles 'consumer-proguard-rules.pro'
+      }
+      compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+      }
+      lint {
+        textReport true
+      }
+    }
+  }
+
+  tasks.withType(KotlinCompile).configureEach {
+    compilerOptions {
+      jvmTarget = JvmTarget.JVM_1_8
+    }
+  }
+
+  tasks.withType(Test).configureEach {
     testLogging {
       events "failed"
       exceptionFormat "full"

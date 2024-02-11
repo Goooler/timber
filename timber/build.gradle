@@ -4,18 +4,7 @@ apply plugin: 'com.vanniktech.maven.publish'
 apply plugin: 'org.jetbrains.dokka' // Must be applied here for publish plugin.
 
 android {
-  compileSdkVersion libs.versions.compileSdk.get().toInteger()
   namespace "timber.log"
-
-  defaultConfig {
-    minSdkVersion libs.versions.minSdk.get().toInteger()
-    consumerProguardFiles 'consumer-proguard-rules.pro'
-  }
-
-  lintOptions {
-    textReport true
-    textOutput 'stdout'
-  }
 }
 
 dependencies {
