@@ -1,17 +1,14 @@
 [versions]
-minSdk = "14"
-compileSdk = "30"
 kotlin = "1.9.22"
+androidTools = "31.2.2"
 autoService = "1.1.1"
-androidTools = "30.0.0"
 
 [libraries]
-androidPlugin = "com.android.tools.build:gradle:7.0.0"
+androidPlugin = "com.android.tools.build:gradle:8.2.2"
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 japicmpPlugin = "me.champeau.gradle:japicmp-gradle-plugin:0.4.2"
-publishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.14.2"
-dokkaPlugin = "org.jetbrains.dokka:dokka-gradle-plugin:1.9.10"
+publishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.27.0"
 lint-core = { module = "com.android.tools.lint:lint", version.ref = "androidTools" }
 lint-api = { module = "com.android.tools.lint:lint-api", version.ref = "androidTools" }
 lint-checks = { module = "com.android.tools.lint:lint-checks", version.ref = "androidTools" }
