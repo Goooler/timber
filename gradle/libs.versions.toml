@@ -2,9 +2,6 @@
 kotlin = "1.9.22"
 androidTools = "31.2.2"
 
-[plugins]
-ksp = "com.google.devtools.ksp:1.9.22-1.0.17"
-
 [libraries]
 androidPlugin = "com.android.tools.build:gradle:8.2.2"
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -15,8 +12,8 @@ lint-core = { module = "com.android.tools.lint:lint", version.ref = "androidTool
 lint-api = { module = "com.android.tools.lint:lint-api", version.ref = "androidTools" }
 lint-checks = { module = "com.android.tools.lint:lint-checks", version.ref = "androidTools" }
 lint-tests = { module = "com.android.tools.lint:lint-tests", version.ref = "androidTools" }
-auto-serviceKsp = "dev.zacsweers.autoservice:auto-service-ksp:1.1.0"
-auto-serviceAnnotations = "com.google.auto.service:auto-service-annotations:1.1.1"
+auto-service = { module = "com.google.auto.service:auto-service", version.ref = "autoService" }
+auto-serviceAnnotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoService" }
 annotations = "org.jetbrains:annotations:24.1.0"
 junit = "junit:junit:4.13.2"
 truth = "com.google.truth:truth:1.4.0"

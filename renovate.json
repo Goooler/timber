@@ -5,15 +5,6 @@
   ],
   "packageRules": [
     {
-      "groupName": "Kotlin and KSP",
-      "matchPackagePrefixes": [
-        "com.google.devtools.ksp"
-      ],
-      "matchPackagePatterns": [
-        "org.jetbrains.kotlin.*"
-      ]
-    },
-    {
       "groupName": "AGP",
       "matchPackagePatterns": [
         "com.android.*"
