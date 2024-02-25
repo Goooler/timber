@@ -6,7 +6,7 @@ autoService = "1.1.1"
 androidTools = "30.0.0"
 
 [libraries]
-androidPlugin = "com.android.tools.build:gradle:7.0.0"
+androidPlugin = "com.android.tools.build:gradle:7.4.2"
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 japicmpPlugin = "me.champeau.gradle:japicmp-gradle-plugin:0.4.2"
