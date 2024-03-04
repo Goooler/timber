@@ -11,7 +11,7 @@ kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 japicmpPlugin = "me.champeau.gradle:japicmp-gradle-plugin:0.4.2"
 publishPlugin = "com.vanniktech:gradle-maven-publish-plugin:0.14.2"
-dokkaPlugin = "org.jetbrains.dokka:dokka-gradle-plugin:1.9.10"
+dokkaPlugin = "org.jetbrains.dokka:dokka-gradle-plugin:1.9.20"
 lint-core = { module = "com.android.tools.lint:lint", version.ref = "androidTools" }
 lint-api = { module = "com.android.tools.lint:lint-api", version.ref = "androidTools" }
 lint-checks = { module = "com.android.tools.lint:lint-checks", version.ref = "androidTools" }
